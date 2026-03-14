@@ -8,15 +8,27 @@
  "engine": "InnoDB",
  "field_order": [
   "title",
+  "status",
   "message",
   "to_number",
-  "time"
+  "time",
+  "error_message",
+  "reference_doctype",
+  "reference_name"
  ],
  "fields": [
   {
    "fieldname": "title",
    "fieldtype": "Data",
    "label": "Title"
+  },
+  {
+   "default": "Sent",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Sent\nFailed"
   },
   {
    "fieldname": "message",
@@ -32,11 +44,28 @@
    "fieldname": "time",
    "fieldtype": "Datetime",
    "label": "Time"
+  },
+  {
+   "fieldname": "error_message",
+   "fieldtype": "Text",
+   "label": "Error Message"
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "label": "Reference DocType",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "reference_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Reference Name",
+   "options": "reference_doctype"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-11-07 11:03:29.385778",
+ "modified": "2026-03-14 00:00:00.000000",
  "modified_by": "Administrator",
  "module": "Whatsapp Saudi",
  "name": "whatsapp saudi success log",
