@@ -219,17 +219,17 @@ app_license = "mit"
 # auth_hooks = [
 #	"whatsapp_saudi.auth.validate"
 # ]
-fixtures=[
-    {"dt":"Whatsapp Saudi"}
-    ]
-
-fixtures=[{ "dt":"Property Setter" ,"filters":[[
-                "name", "in",[
-                    "Notification-channel-options",] ]]
-           }]
-fixtures=[{ "dt":"Custom Field" ,"filters":[[
-                "module", "in",["Whatsapp Saudi"] ]]
-           }]
+fixtures = [
+    {"dt": "Whatsapp Saudi"},
+    {
+        "dt": "Property Setter",
+        "filters": [["name", "in", ["Notification-channel-options"]]],
+    },
+    {
+        "dt": "Custom Field",
+        "filters": [["module", "in", ["Whatsapp Saudi"]]],
+    },
+]
 doctype_js = {
     "Notification": "public/js/whatsapp_notification.js",
     "Sales Invoice": [
@@ -245,3 +245,19 @@ doctype_js = {
 override_doctype_class = {
 	"Notification": "whatsapp_saudi.overrides.whtatsapp_notification.ERPGulfNotification"
  }
+
+permission_query_conditions = {
+    "Leave Application": "whatsapp_saudi.whatsapp_saudi.doctype.manager_permissions.manager_permissions.get_permission_query_conditions",
+    "Loan Application": "whatsapp_saudi.whatsapp_saudi.doctype.manager_permissions.manager_permissions.get_permission_query_conditions",
+    "Clearance Form": "whatsapp_saudi.whatsapp_saudi.doctype.manager_permissions.manager_permissions.get_permission_query_conditions",
+    "Visit Form": "whatsapp_saudi.whatsapp_saudi.doctype.manager_permissions.manager_permissions.get_permission_query_conditions",
+    "Permission Application": "whatsapp_saudi.whatsapp_saudi.doctype.manager_permissions.manager_permissions.get_permission_query_conditions",
+}
+
+has_permission = {
+    "Leave Application": "whatsapp_saudi.whatsapp_saudi.doctype.manager_permissions.manager_permissions.has_permission",
+    "Loan Application": "whatsapp_saudi.whatsapp_saudi.doctype.manager_permissions.manager_permissions.has_permission",
+    "Clearance Form": "whatsapp_saudi.whatsapp_saudi.doctype.manager_permissions.manager_permissions.has_permission",
+    "Visit Form": "whatsapp_saudi.whatsapp_saudi.doctype.manager_permissions.manager_permissions.has_permission",
+    "Permission Application": "whatsapp_saudi.whatsapp_saudi.doctype.manager_permissions.manager_permissions.has_permission",
+}
