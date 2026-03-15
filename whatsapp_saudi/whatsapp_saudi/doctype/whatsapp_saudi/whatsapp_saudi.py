@@ -277,9 +277,11 @@ def rasayel_whatsapp_file_message_pdf(docname):
 def send_bevatel_message(phone):
     import requests
 
-    doc = frappe.get_doc("Whatsapp Saudi", frappe.form_dict.docname)
+    doc = frappe.get_doc("Whatsapp Saudi")
 
-    url = "https://chat.bevatel.com/developer/api/v1/messages"
+    url = doc.bavatel_file_url or "https://chat.bevatel.com/developer/api/v1/messages"
+    template_name = doc.template_name or "opening_message"
+    language = doc.language or "ar"
 
     payload = {
         "inbox_id": doc.inbox_id,
@@ -288,8 +290,8 @@ def send_bevatel_message(phone):
         },
         "message": {
             "template": {
-                "name": "opening_message",
-                "language": "ar"
+                "name": template_name,
+                "language": language
             }
         }
     }
@@ -301,10 +303,10 @@ def send_bevatel_message(phone):
     }
 
     try:
-        response = requests.post(url, headers=headers, json=payload)
+        response = requests.post(url, headers=headers, json=payload, timeout=30)
 
         response_data = response.json()
-        if response.status_code == 201 and response_data.get("message") == "Message created successfully":
+        if response.status_code in (200, 201):
 
             frappe.get_doc({
                 "doctype": "whatsapp saudi success log",
