@@ -29,7 +29,7 @@ bench --site your-site-name migrate
 bench restart
 ```
 
-> **Dependency**: `pikepdf ≥ 8.0.0` is required for PDF/A-3 generation and is installed automatically via `pyproject.toml`.
+> **Note**: PDF/A-3 generation features require `pikepdf` to be available in the Python environment. If not installed, those features will be disabled but the app will still function normally.
 
 ---
 
