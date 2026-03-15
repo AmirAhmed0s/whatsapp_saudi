@@ -9,6 +9,14 @@ import json
 import base64
 from frappe.utils import now
 import time
+
+try:
+    import pikepdf
+    PIKEPDF_AVAILABLE = True
+except ImportError:
+    pikepdf = None
+    PIKEPDF_AVAILABLE = False
+
 sales_invoice_doctype="Sales Invoice"
 GTS_PDFA1 = "/GTS_PDFA1"
 
@@ -41,7 +49,8 @@ def generate_invoice_pdf(invoice, language, letterhead, print_format):
 
 def embed_file_in_pdf_1(input_pdf, xml_file, output_pdf):
     """embed the pdf file"""
-    import pikepdf
+    if not PIKEPDF_AVAILABLE:
+        frappe.throw("pikepdf is not installed. PDF/A-3 embedding is not available.")
     app_path = frappe.get_app_path("Whatsapp Saudi")
     icc_path = app_path + "/sRGB.icc"
 
@@ -164,7 +173,8 @@ def embed_file_in_pdf(invoice_name, print_format, letterhead, language):
     """
     Embed XML into a PDF using pikepdf.
     """
-    import pikepdf
+    if not PIKEPDF_AVAILABLE:
+        frappe.throw("pikepdf is not installed. PDF/A-3 embedding is not available.")
 
     try:
         if not language:
@@ -349,7 +359,8 @@ def embed_public_file_in_pdf(invoice_name, print_format, letterhead=None, langua
     """
     Generate PDF/A3 with embedded XML and save it as a public file.
     """
-    import pikepdf
+    if not PIKEPDF_AVAILABLE:
+        frappe.throw("pikepdf is not installed. PDF/A-3 embedding is not available.")
 
     try:
         if not language:
