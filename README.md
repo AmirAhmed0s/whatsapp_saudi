@@ -11,7 +11,7 @@ Supports **4Whats.net**, **Rasayel**, and **Bevatel** out of the box.
 ## 🔧 Installation
 
 ### Prerequisites
-- **ERPNext** v14 or later installed and running.
+- **ERPNext** v13 or later (tested on v13, v14, v15).
 - **Python ≥ 3.10** and **Frappe Framework**.
 - `bench` CLI available on the server.
 
@@ -46,26 +46,26 @@ Open **ERPNext → Whatsapp Saudi** (single-document form) and:
 
 ## 🔌 Provider Setup
 
-### 1️⃣ 4Whats.net
+### 1️⃣ Whats.net
 
 | Field | Description |
 |-------|-------------|
 | File URL | Default: `https://api.4whats.net/sendFile` |
 | Message URL | Default: `https://api.4whats.net/sendMessage` |
-| Token | Your 4Whats.net API token |
-| Instance ID | Your 4Whats.net instance ID |
+| Token | Your Whats.net API token |
+| Instance ID | Your Whats.net instance ID |
 
 **Supported features:**
 - ✅ Plain text messages
 - ✅ PDF / file sending
 - ✅ Incoming webhook handling
 
-**Webhook URL** (paste in your 4Whats.net dashboard):
+**Webhook URL** (paste in your Whats.net dashboard):
 ```
 https://your-erpnext-site.com/api/method/whatsapp_saudi.overrides.whtatsapp_notification.receive_whatsapp_message
 ```
 
-![4Whats.net configuration](assets/whatsnet.png)
+![Whats.net configuration](assets/whatsnet.png)
 
 ---
 
@@ -116,7 +116,7 @@ https://your-erpnext-site.com/api/method/whatsapp_saudi.overrides.whtatsapp_noti
 
 | Feature | Description |
 |---------|-------------|
-| Multi-provider | Switch between 4Whats.net, Rasayel, and Bevatel from a single setting |
+| Multi-provider | Switch between **Whats.net**, Rasayel, and Bevatel from a single setting |
 | Notification channel | `Whatsapp Saudi` channel appears in the standard Frappe **Notification** doctype |
 | Dynamic recipients | Resolve phone numbers from linked Customer / Supplier / Employee / Contact / Lead records automatically |
 | Role-based recipients | Send to all users who hold a specific ERPNext role |
