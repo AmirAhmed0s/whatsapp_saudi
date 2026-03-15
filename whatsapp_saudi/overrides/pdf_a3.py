@@ -1,6 +1,5 @@
 from datetime import datetime
 import os
-import pikepdf
 import frappe
 import frappe.utils
 from frappe.utils.pdf import get_pdf
@@ -42,6 +41,7 @@ def generate_invoice_pdf(invoice, language, letterhead, print_format):
 
 def embed_file_in_pdf_1(input_pdf, xml_file, output_pdf):
     """embed the pdf file"""
+    import pikepdf
     app_path = frappe.get_app_path("Whatsapp Saudi")
     icc_path = app_path + "/sRGB.icc"
 
@@ -164,6 +164,7 @@ def embed_file_in_pdf(invoice_name, print_format, letterhead, language):
     """
     Embed XML into a PDF using pikepdf.
     """
+    import pikepdf
 
     try:
         if not language:
@@ -348,6 +349,7 @@ def embed_public_file_in_pdf(invoice_name, print_format, letterhead=None, langua
     """
     Generate PDF/A3 with embedded XML and save it as a public file.
     """
+    import pikepdf
 
     try:
         if not language:
